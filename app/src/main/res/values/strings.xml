@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DnD</string>
+    <string name="features">Features</string>
+    <string name="classes">Classes</string>
+    <string name="monsters">Monsters</string>
+    <string name="spells">Spells</string>
+</resources>
