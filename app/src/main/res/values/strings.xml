@@ -4,4 +4,6 @@
     <string name="classes">Classes</string>
     <string name="monsters">Monsters</string>
     <string name="spells">Spells</string>
+    <string name="back">Back</string>
+    <string name="error_message">Error: </string>
 </resources>
