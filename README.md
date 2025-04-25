@@ -11,6 +11,6 @@ All of the screens except the main screen use MVVM architecture.
 
 
 ## Credits
-The launcher icon is from [SVG Repo](https://www.svgrepo.com/svg/322179/dice-twenty-faces-one)
+The launcher icon is from [SVG Repo](https://www.svgrepo.com/svg/322179/dice-twenty-faces-one).
 The background from the main screen is from [Pixabay](https://pixabay.com/photos/incantation-conjuration-spell-5337079/)
 
