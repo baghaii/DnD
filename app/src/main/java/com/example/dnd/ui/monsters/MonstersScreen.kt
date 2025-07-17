@@ -10,6 +10,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -48,13 +51,19 @@ fun MonstersScreen(
                 title = { Text(stringResource(R.string.monsters)) })
         }
     ) { padding ->
-        LazyColumn(
+        val state = rememberLazyGridState()
+        LazyVerticalGrid(
+            state = state,
+            columns = GridCells.Adaptive(250.dp),
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
                 .background(MaterialTheme.colorScheme.primaryContainer)
         ) {
-            items(dndMonsters.value.dndMonsters.size) { item ->
+            items(
+                count = dndMonsters.value.dndMonsters.size,
+                key = { index -> dndMonsters.value.dndMonsters[index].index }
+            ) { item ->
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()

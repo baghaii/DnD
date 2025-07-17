@@ -1,6 +1,7 @@
 package com.example.dnd.networking.di
 
 import android.util.Log
+import com.example.dnd.networking.DndRepository
 import com.example.dnd.networking.DndService
 import com.example.dnd.networking.RequestInterceptor
 import dagger.Module
@@ -40,5 +41,15 @@ object NetworkingModule {
     @Singleton
     fun providesDndService(retrofit: Retrofit): DndService {
         return retrofit.create(DndService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesDndRepository(
+        dndService: DndService
+    ): DndRepository {
+        return DndRepository(
+            dndService
+        )
     }
 }

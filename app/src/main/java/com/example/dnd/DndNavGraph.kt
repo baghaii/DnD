@@ -1,5 +1,7 @@
 package com.example.dnd
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -25,6 +27,18 @@ fun DndNavGraph(
     NavHost(
         navController = navController,
         startDestination = DndDestinations.HOME_ROUTE,
+        enterTransition = {
+            slideIntoContainer(
+                towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                animationSpec = tween()
+            )
+        },
+        exitTransition = {
+            slideOutOfContainer(
+                towards = AnimatedContentTransitionScope.SlideDirection.Down,
+                animationSpec = tween()
+            )
+        }
     ) {
         composable(route = DndDestinations.HOME_ROUTE) {
             HomeScreen(

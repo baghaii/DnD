@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dnd.data.GenericDndClass
 import com.example.dnd.data.Spells
+import com.example.dnd.networking.DndRepository
 import com.example.dnd.networking.DndService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -15,14 +16,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SpellsViewModel @Inject constructor(
-    private val dndService: DndService
+    private val dndRepository: DndRepository
 ): ViewModel() {
     private val _state = MutableStateFlow(SpellsUiState(dndSpells = emptyList()))
     val state = _state.asStateFlow()
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
-            val dndSpells = dndService.getSpells()
+        viewModelScope.launch {
+            val dndSpells = dndRepository.getSpells()
             _state.update {
                 it.copy(dndSpells = dndSpells.results)
             }

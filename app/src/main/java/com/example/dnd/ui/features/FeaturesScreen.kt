@@ -57,7 +57,10 @@ fun FeaturesScreen(
                 .padding(padding)
                 .background(MaterialTheme.colorScheme.primaryContainer)
         ) {
-            items(dndFeatures.value.dndFeatures.size) { item ->
+            items(
+                count = dndFeatures.value.dndFeatures.size,
+                key = { index -> dndFeatures.value.dndFeatures[index].index }
+            ) { item ->
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()

@@ -3,6 +3,7 @@ package com.example.dnd.ui.classes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dnd.data.GenericDndClass
+import com.example.dnd.networking.DndRepository
 import com.example.dnd.networking.DndService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -14,15 +15,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ClassesViewModel @Inject constructor(
-    private val dndService: DndService
+    private val dndRepository: DndRepository
 ) : ViewModel() {
     private val _state = MutableStateFlow(ClassesUiState(dndClasses = emptyList()))
     val state = _state.asStateFlow()
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             try {
-                val dndClasses = dndService.getClasses()
+                val dndClasses = dndRepository.getClasses()
                 _state.update {
                     it.copy(dndClasses = dndClasses.results)
                 }
