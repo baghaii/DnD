@@ -5,6 +5,7 @@ hiltNavigationCompose = "1.2.0"
 kotlin = "2.0.21"
 ksp = "2.0.21-1.0.27" # First three numbers must match kotlin version
 coreKtx = "1.15.0"
+detekt = "1.23.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -46,4 +47,5 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 hilt-android = {id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 devtools-ksp = {id = "com.google.devtools.ksp", version.ref = "ksp"}
+detekt-gradle = {id = "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
 

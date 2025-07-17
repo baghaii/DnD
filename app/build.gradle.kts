@@ -2,9 +2,16 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.detekt.gradle)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
+}
+
+detekt {
+    toolVersion = "1.23.8"
+    config.setFrom(file("config/detekt/detekt.yml"))
+    buildUponDefaultConfig = true
 }
 
 android {
